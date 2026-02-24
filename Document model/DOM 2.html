@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Story Telling App</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background: #f5f5f5;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .story-container {
+            border: 3px solid #ccc;
+            padding: 20px;
+            max-width: 700px;
+            background: white;
+            border-radius: 10px;
+            transition: border-color 0.3s ease;
+        }
+
+        .btn-container {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            margin-right: 10px;
+            padding: 8px 14px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background: #333;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        #result {
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📖 Want to hear a short story?</h1>
+
+    <main class="story-container">
+        <div class="btn-container">
+            <button class="btn" data-genre="scary">Scary Story</button>
+            <button class="btn" data-genre="funny">Funny Story</button>
+            <button class="btn" data-genre="adventure">Adventure Story</button>
+        </div>
+
+        <p id="result">Click a button to read a story.</p>
+    </main>
+
+    <script>
+        const storyContainer = document.querySelector('.story-container');
+        const buttons = document.querySelectorAll('.btn');
+        const resultParagraph = document.querySelector('#result');
+
+        const storyObj = {
+            scary: {
+                story: "In the dark woods, a group of friends discovered an abandoned cabin. Inside, they unknowingly awakened something that had been sleeping for centuries.",
+                borderColor: "#ee4b2b"
+            },
+            funny: {
+                story: "Mark tried cooking over a campfire to impress everyone. He burned the food… and accidentally burned off his eyebrows too.",
+                borderColor: "#f1be32"
+            },
+            adventure: {
+                story: "Deep in the Amazon rainforest, Sarah and Jake found a hidden temple filled with ancient traps and mysterious clues.",
+                borderColor: "#acd157"
+            }
+        };
+
+        function displayStory(genre) {
+            if (storyObj[genre]) {
+                resultParagraph.textContent = storyObj[genre].story;
+                storyContainer.style.borderColor = storyObj[genre].borderColor;
+            }
+        }
+
+        // Single logic for all buttons
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+                const genre = button.dataset.genre;
+                displayStory(genre);
+            });
+        });
+    </script>
+
+</body>
+</html>
