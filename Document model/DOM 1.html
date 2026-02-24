@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Favorite Icon Toggler</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .item-list {
+            list-style: none;
+            padding: 0;
+            max-width: 300px;
+        }
+
+        .item-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            font-size: 18px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .favorite-icon {
+            font-size: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .favorite-icon:hover {
+            transform: scale(1.2);
+        }
+
+        .favorite-icon.filled {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>🍎 Favorite Fruits</h2>
+
+    <ul class="item-list">
+        <li>
+            Apple
+            <button class="favorite-icon">&#9825;</button>
+        </li>
+        <li>
+            Banana
+            <button class="favorite-icon">&#9825;</button>
+        </li>
+        <li>
+            Orange
+            <button class="favorite-icon">&#9825;</button>
+        </li>
+    </ul>
+
+    <script>
+        const buttons = document.querySelectorAll('.favorite-icon');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+
+                button.classList.toggle('filled');
+
+                // Toggle heart icon
+                button.innerHTML = button.classList.contains('filled')
+                    ? '&#10084;'   // Filled heart
+                    : '&#9825;';   // Empty heart
+            });
+        });
+    </script>
+
+</body>
+</html>
